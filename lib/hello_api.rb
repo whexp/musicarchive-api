@@ -65,6 +65,42 @@ class HelloAPI < Grape::API
             end
         end
     end
+   
+    namespace :top_artists do
+        desc %q<Respond Hello <name> where <name> is the name parameter>
+        get do
+            response = $musicarchive['recent.json'].get
+            data = JSON::parse(response.body)
+            tracks = data['aTracks']
+            tracks.each do |track|
+                {
+                    track_id: track["track_id"],
+                    artist: track["track_artist_name"],
+                    title: track["track_title"],
+                    date_created: track["track_date_created"],
+                    downnloads: track["track_downloads"], 
+                }
+            end
+        end
+    end
+    
+    namespace :recent do
+        desc %q<Respond Hello <name> where <name> is the name parameter>
+        get do
+            response = $musicarchive['recent.json'].get
+            data = JSON::parse(response.body)
+            tracks = data['aTracks']
+            tracks.each do |track|
+                {
+                    track_id: track["track_id"],
+                    artist: track["track_artist_name"],
+                    title: track["track_title"],
+                    date_created: track["track_date_created"],
+                    downnloads: track["track_downloads"], 
+                }
+            end
+        end
+    end
 
 
 
