@@ -5,6 +5,7 @@ PATH
       grape (= 0.6.1)
       netaddr (= 1.5.0)
       rack (= 1.5.2)
+      rack-cors
       rest-client
 
 GEM
@@ -40,14 +41,14 @@ GEM
       rack-accept
       rack-mount
       virtus (>= 1.0.0)
-    hashie (3.4.2)
+    hashie (3.4.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
     ice_nine (0.11.1)
     json (1.8.3)
     mime-types (2.6.2)
-    minitest (5.8.1)
+    minitest (5.8.2)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     netaddr (1.5.0)
@@ -55,6 +56,7 @@ GEM
     rack (1.5.2)
     rack-accept (0.4.5)
       rack (>= 0.4)
+    rack-cors (0.4.0)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
     rake (10.4.2)
@@ -103,3 +105,6 @@ DEPENDENCIES
   rspec-expectations (~> 3.0)
   rspec-mocks (~> 3.0)
   simplecov
+
+BUNDLED WITH
+   1.10.5
