@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     s.add_dependency('rack',              '1.5.2')
     s.add_dependency('grape',             '0.6.1')
 
+    s.add_runtime_dependency('rest-client')
     s.add_development_dependency 'rspec', '~> 3.0'
     s.add_development_dependency 'rspec-core',              '~> 3.0'
     s.add_development_dependency 'rspec-mocks',             '~> 3.0'
