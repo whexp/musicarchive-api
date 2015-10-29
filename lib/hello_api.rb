@@ -54,13 +54,13 @@ class HelloAPI < Grape::API
             response = $musicarchive['recent.json'].get
             data = JSON::parse(response.body)
             tracks = data['aTracks'].sort{|x,y| y['track_downloads'].to_i <=> x['track_downloads'].to_i}
-            tracks.each do |track|
+            tracks.map do |track|
                 {
                     track_id: track["track_id"],
-                    artist: track["track_artist_name"],
+                    artist: track["artist_name"],
                     title: track["track_title"],
                     date_created: track["track_date_created"],
-                    downnloads: track["track_downloads"],
+                    downloads: track["track_downloads"], 
                 }
             end
         end
@@ -71,16 +71,13 @@ class HelloAPI < Grape::API
         get do
             response = $musicarchive['recent.json'].get
             data = JSON::parse(response.body)
-            tracks = data['aTracks']
-            tracks.each do |track|
-                {
-                    track_id: track["track_id"],
-                    artist: track["track_artist_name"],
-                    title: track["track_title"],
-                    date_created: track["track_date_created"],
-                    downnloads: track["track_downloads"],
-                }
-            end
+            artists = data['aTracks']
+            artists_list ={}
+            artists.each{|a|
+                artists_list[a['artist_name']] ||=0
+                artists_list[a['artist_name']] += a['track_downloads'].to_i
+            }
+            artists_list
         end
     end
 
@@ -90,13 +87,13 @@ class HelloAPI < Grape::API
             response = $musicarchive['recent.json'].get
             data = JSON::parse(response.body)
             tracks = data['aTracks']
-            tracks.each do |track|
+            tracks.map do |track|
                 {
                     track_id: track["track_id"],
-                    artist: track["track_artist_name"],
+                    artist: track["artist_name"],
                     title: track["track_title"],
                     date_created: track["track_date_created"],
-                    downnloads: track["track_downloads"],
+                    downloads: track["track_downloads"], 
                 }
             end
         end
